@@ -1,7 +1,6 @@
+#include <core/core.hpp>
 #include <cstdio>
 
-#if !defined(BUILD_BENCHMARK) && !defined(BUILD_TESTS)
 int main(int argc, char* argv[]) {
-  std::printf("test\n");
+  std::printf("core: %d\n", core::core());
 }
-#endif

@@ -18,7 +18,11 @@ if not exist %__MAKE_BINARY% (
   goto :cleanup
 )
 
-set __SKIP_VCVARS_INITIALIZATION=1
+if "%1"=="" (
+  set __SKIP_VCVARS_INITIALIZATION=0
+) else (
+  set __SKIP_VCVARS_INITIALIZATION=1
+)
 
 for %%i in (%*) do (
   (echo :clean: :ports: | findstr /i ":%%i:" 1>nul 2>nul) || (

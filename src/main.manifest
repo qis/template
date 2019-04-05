@@ -14,9 +14,11 @@
 
   <!-- DPI Awareness -->
   <application xmlns="urn:schemas-microsoft-com:asm.v3">
-    <windowsSettings>
+    <windowsSettings xmlns:ws2="http://schemas.microsoft.com/SMI/2016/WindowsSettings">
       <!-- Setting: System | PerMonitor | PerMonitorV2 | Unaware -->
-      <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2</dpiAwareness>
+      <ws2:dpiAwareness>PerMonitorV2</ws2:dpiAwareness>
+      <!-- Setting: true | false -->
+      <ws2:longPathAware>true</ws2:longPathAware>
     </windowsSettings>
   </application>
 

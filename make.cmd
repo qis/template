@@ -1,15 +1,15 @@
 @echo off
 rem
-rem Download Binaries and Dependencies for make:
+rem Download make executable:
 rem
-rem   http://gnuwin32.sourceforge.net/packages/make.htm
+rem   http://www.equation.com/servlet/equation.cmd?fa=make
 rem
-rem Extarct archives into:
+rem Save executable as:
 rem
-rem   "%ProgramFiles(x86)%\GNU"
+rem   "%ProgramFiles%\GNU\make.exe"
 rem
 
-set __MAKE_BINARY="%ProgramFiles(x86)%\GNU\bin\make.exe"
+set __MAKE_BINARY="%ProgramFiles%\GNU\make.exe"
 set __VS_LOCATION="%ProgramFiles(x86)%\Microsoft Visual Studio\2017"
 set __VS_EDITIONS="Enterprise,Professional,Community"
 

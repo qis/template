@@ -28,9 +28,6 @@ add_library(objects OBJECT ${headers} ${sources} ${CMAKE_CURRENT_BINARY_DIR}/src
 target_include_directories(objects PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/src src
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>$<INSTALL_INTERFACE:include>)
 
-find_package(Threads REQUIRED)
-target_link_libraries(objects PUBLIC Threads::Threads)
-
 find_package(fmt CONFIG REQUIRED)
 target_link_libraries(objects PUBLIC fmt::fmt)
 

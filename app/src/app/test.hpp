@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 
-namespace core {
+namespace app {
 
 std::string test();
 
-}  // namespace core
+}  // namespace app

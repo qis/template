@@ -12,7 +12,7 @@ MAKEFLAGS += --no-print-directory
 
 ifeq ($(OS),Windows_NT)
 SYSTEM	:= windows
-SCRIPT	:= $(dir $(shell where vcpkg))scripts
+SCRIPT	:= $(dir $(shell where vcpkg.exe))scripts
 else
 SYSTEM	:= linux
 SCRIPT	:= $(dir $(shell which vcpkg))scripts
@@ -21,8 +21,7 @@ endif
 TARGET	:= $(shell cmake -P res/target.cmake 2>&1)
 CONFIG	:= -DCMAKE_TOOLCHAIN_FILE:PATH="$(SCRIPT)/buildsystems/vcpkg.cmake"
 CONFIG	+= -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE:PATH="$(SCRIPT)/toolchains/$(SYSTEM).cmake"
-CONFIG	+= -DVCPKG_TARGET_TRIPLET=x64-$(SYSTEM) -DCMAKE_INSTALL_PREFIX:PATH="$(CURDIR)"
-CONFIG	+= -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+CONFIG	+= -DVCPKG_TARGET_TRIPLET=x64-$(SYSTEM) -DCMAKE_INSTALL_PREFIX:PATH="$(CURDIR)/release"
 
 all: build/$(SYSTEM)/debug/CMakeCache.txt
 	@cmake --build build/$(SYSTEM)/debug --target $(TARGET)
@@ -44,6 +43,9 @@ benchmark: build/$(SYSTEM)/release/CMakeCache.txt
 install: build/$(SYSTEM)/release/CMakeCache.txt
 	@cmake --build build/$(SYSTEM)/release --target install
 
+package: build/$(SYSTEM)/release/CMakeCache.txt
+	@cmake --build build/$(SYSTEM)/release --target package
+
 format: build/$(SYSTEM)/debug/CMakeCache.txt
 	@cmake --build build/$(SYSTEM)/debug --target format
 
@@ -59,4 +61,4 @@ build/$(SYSTEM)/debug/CMakeCache.txt: CMakeLists.txt
 build/$(SYSTEM)/release/CMakeCache.txt: CMakeLists.txt
 	@cmake -GNinja $(CONFIG) -DCMAKE_BUILD_TYPE=Release -B build/$(SYSTEM)/release
 
-.PHONY: all run test benchmark install format clean ports
+.PHONY: all run test benchmark install package format clean ports

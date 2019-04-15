@@ -18,7 +18,8 @@
 !/.gitattributes
 !/.gitignore
 !/CMakeLists.txt
-!/CMakeSettings.json
+!/license.txt
 !/make.cmd
 !/makefile
 !/ports.txt
+!/readme.md

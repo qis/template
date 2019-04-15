@@ -1,0 +1,24 @@
+# root
+/*
+
+# dotfiles
+.*
+
+# include
+!/include/
+
+# res
+!/res/
+
+# src
+!/src/
+
+# files
+!/.clang-format
+!/.gitattributes
+!/.gitignore
+!/CMakeLists.txt
+!/make.cmd
+!/makefile
+!/ports.txt
+!/readme.md

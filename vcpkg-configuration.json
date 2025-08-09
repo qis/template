@@ -1,0 +1,17 @@
+{
+  "default-registry": {
+    "kind": "git",
+    "repository": "git@github.com:qis/vcpkg",
+    "baseline": "dd3097e305afa53f7b4312371f62058d2e665320"
+  },
+  "registries": [
+    {
+      "kind": "git",
+      "repository": "git@github.com:qis/ports",
+      "baseline": "1b6adeccdf49fb7c89119d2336c8e9818632b534",
+      "packages": [ "spdlog" ]
+    }
+  ],
+  "overlay-ports": [ "./res/ports" ],
+  "overlay-triplets": [ "./res/triplets" ]
+}

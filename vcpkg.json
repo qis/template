@@ -1,0 +1,19 @@
+{
+  "name": "official",
+  "dependencies": [
+    {
+      "name": "spdlog",
+      "default-features": false,
+      "features": [
+        "wchar"
+      ]
+    },
+    "benchmark",
+    {
+      "name": "gtest",
+      "features": [
+        "cxx17"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+/*
+.*
+!/res/
+!/src/
+!.clangd
+!.clang-format
+!.clang-tidy
+!.editorconfig
+!.gitattributes
+!.gitignore
+!/CMakeLists.txt
+!/CMakePresets.json
+!/readme.md
+!/vcpkg.json
+!/vcpkg-configuration.json

@@ -1,0 +1,154 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 31
+  },
+  "configurePresets": [
+    {
+      "hidden": true,
+      "name": "default",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/build/${presetName}/package",
+      "toolchainFile": "${sourceDir}/res/vcpkg.cmake",
+      "warnings": { "dev": false },
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "CMAKE_VERBOSE_MAKEFILE": false
+      },
+      "environment": {
+        "VCPKG_DOWNLOADS": "${sourceDir}/.cache/vcpkg/downloads",
+        "VCPKG_INSTALLED_DIR": "${sourceDir}/.cache/vcpkg/installed",
+        "VCPKG_BINARY_SOURCES": "files,${sourceDir}/.cache/vcpkg/binaries,readwrite",
+        "VCPKG_FORCE_SYSTEM_BINARIES": "ON",
+        "VCPKG_DISABLE_METRICS": "ON",
+        "VSLANG": "1033"
+      }
+    },
+    {
+      "name": "x86-debug",
+      "inherits": "default",
+      "architecture": { "value": "x86", "strategy": "external" },
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "company-windows-x86-debug",
+        "BUILD_TESTS": true
+      }
+    },
+    {
+      "name": "x86-release",
+      "inherits": "default",
+      "architecture": { "value": "x86", "strategy": "external" },
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "company-windows-x86-release",
+        "BUILD_BENCHMARKS": true
+      }
+    },
+    {
+      "name": "x64-debug",
+      "inherits": "default",
+      "architecture": { "value": "x64", "strategy": "external" },
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "company-windows-x64-debug",
+        "BUILD_TESTS": true
+      }
+    },
+    {
+      "name": "x64-release",
+      "inherits": "default",
+      "architecture": { "value": "x64", "strategy": "external" },
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "company-windows-x64-release",
+        "BUILD_BENCHMARKS": true
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "x86-debug",
+      "displayName": "X86 Debug",
+      "configurePreset": "x86-debug"
+    },
+    {
+      "name": "x86-release",
+      "displayName": "X86 Release",
+      "configurePreset": "x86-release"
+    },
+    {
+      "name": "x64-debug",
+      "displayName": "X64 Debug",
+      "configurePreset": "x64-debug"
+    },
+    {
+      "name": "x64-release",
+      "displayName": "X64 Release",
+      "configurePreset": "x64-release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "x86-debug",
+      "displayName": "X86 Tests",
+      "configurePreset": "x86-debug",
+      "output": {
+        "outputOnFailure": true,
+        "verbosity": "verbose"
+      }
+    },
+    {
+      "name": "x64-debug",
+      "displayName": "X64 Tests",
+      "configurePreset": "x64-debug",
+      "output": {
+        "outputOnFailure": true,
+        "verbosity": "verbose"
+      }
+    }
+  ],
+  "packagePresets": [
+    {
+      "name": "x86-release",
+      "displayName": "X86 Package",
+      "configurePreset": "x86-release"
+    },
+    {
+      "name": "x64-release",
+      "displayName": "X64 Package",
+      "configurePreset": "x64-release"
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "x86-debug",
+      "steps": [
+        { "name": "x86-debug", "type": "configure" },
+        { "name": "x86-debug", "type": "build" },
+        { "name": "x86-debug", "type": "test" }
+      ]
+    },
+    {
+      "name": "x86-release",
+      "steps": [
+        { "name": "x86-release", "type": "configure" },
+        { "name": "x86-release", "type": "build" },
+        { "name": "x86-release", "type": "package" }
+      ]
+    },
+    {
+      "name": "x64-debug",
+      "steps": [
+        { "name": "x64-debug", "type": "configure" },
+        { "name": "x64-debug", "type": "build" },
+        { "name": "x64-debug", "type": "test" }
+      ]
+    },
+    {
+      "name": "x64-release",
+      "steps": [
+        { "name": "x64-release", "type": "configure" },
+        { "name": "x64-release", "type": "build" },
+        { "name": "x64-release", "type": "package" }
+      ]
+    }
+  ]
+}

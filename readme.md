@@ -10,8 +10,10 @@ cmake --workflow x64-debug
 
 :: Build project and create package.
 cmake --workflow x64-release
+
+:: Manually test package.
 7z t build\x64-release\template.7z
 
-:: Run benchmarks.
+:: Manually run benchmarks.
 build\x64-release\bin\benchmarks.exe
 ```

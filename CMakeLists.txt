@@ -17,8 +17,13 @@ if(WIN32)
   target_compile_definitions(objects PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN)
 endif()
 
+find_package(Boost CONFIG REQUIRED COMPONENTS core system
+  bimap container circular_buffer lockfree outcome heap leaf
+  asio beast json url filesystem process program_options)
+target_link_libraries(objects PUBLIC ${Boost_LIBRARIES})
+
 find_package(spdlog CONFIG REQUIRED)
-target_link_libraries(objects PRIVATE spdlog::spdlog)
+target_link_libraries(objects PUBLIC spdlog::spdlog)
 
 # Application
 add_executable(main src/main.cpp src/main.manifest src/main.rc)

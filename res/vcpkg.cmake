@@ -10,7 +10,10 @@ cmake_path(CONVERT "${VS_ROOT}" TO_CMAKE_PATH_LIST VS_ROOT NORMALIZE)
 find_program(VCPKG NAMES vcpkg REQUIRED PATHS "${VS_ROOT}/VC/vcpkg")
 get_filename_component(VCPKG_ROOT "${VCPKG}" DIRECTORY)
 
-set(VCPKG_INSTALL_OPTIONS "--clean-buildtrees-after-build;--clean-packages-after-build;--no-print-usage")
+set(VCPKG_INSTALL_OPTIONS "--x-no-default-features")
+set(VCPKG_INSTALL_OPTIONS "${VCPKG_INSTALL_OPTIONS};--clean-buildtrees-after-build")
+set(VCPKG_INSTALL_OPTIONS "${VCPKG_INSTALL_OPTIONS};--clean-packages-after-build")
+set(VCPKG_INSTALL_OPTIONS "${VCPKG_INSTALL_OPTIONS};--no-print-usage")
 set(VCPKG_CHAINLOAD_TOOLCHAIN_FILE "${CMAKE_CURRENT_LIST_DIR}/toolchain.cmake")
 include("${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 

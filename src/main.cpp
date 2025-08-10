@@ -1,16 +1,14 @@
 #include <company/random.hpp>
-#include <format>
-#include <cstdio>
+#include <iostream>
 #include <cstdlib>
 
-int main()
-{
+int main() {
   try {
-    std::fputs(std::format("{}\r\n", company::random()).data(), stdout);
-    company::test();
+    std::cout << company::random() << "\r\n";
+    std::cout << company::test() << std::endl;
   }
   catch (const std::exception& e) {
-    std::fputs(std::format("error: {}\r\n", e.what()).data(), stderr);
+    std::cerr << "Error: " << e.what() << std::endl;
     return EXIT_FAILURE;
   }
   return EXIT_SUCCESS;

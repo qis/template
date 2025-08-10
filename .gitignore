@@ -8,6 +8,7 @@
 !.editorconfig
 !.gitattributes
 !.gitignore
+!/build.cmd
 !/CMakeLists.txt
 !/CMakePresets.json
 !/readme.md

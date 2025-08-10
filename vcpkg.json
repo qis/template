@@ -1,6 +1,21 @@
 {
   "name": "official",
   "dependencies": [
+    "boost-core",
+    "boost-bimap",
+    "boost-container",
+    "boost-circular-buffer",
+    "boost-lockfree",
+    "boost-outcome",
+    "boost-heap",
+    "boost-leaf",
+    "boost-asio",
+    "boost-beast",
+    "boost-json",
+    "boost-url",
+    "boost-filesystem",
+    "boost-process",
+    "boost-program-options",
     {
       "name": "spdlog",
       "default-features": false,
@@ -8,12 +23,12 @@
         "wchar"
       ]
     },
-    "benchmark",
     {
       "name": "gtest",
       "features": [
         "cxx17"
       ]
-    }
+    },
+    "benchmark"
   ]
 }

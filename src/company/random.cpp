@@ -1,4 +1,5 @@
 #include "random.hpp"
+#include <boost/filesystem/operations.hpp>
 #include <spdlog/spdlog.h>
 #include <version.h>
 #include <format>
@@ -7,8 +8,9 @@
 
 namespace company {
 
-void test() {
+boost::filesystem::path test() {
   spdlog::info("Version: {}", PROJECT_VERSION);
+  return boost::filesystem::current_path();
 }
 
 std::string random() {

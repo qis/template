@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.31 FATAL_ERROR)
 project(template DESCRIPTION "Template" VERSION 0.1.0 LANGUAGES CXX)
 
 # Version
+set(COMPANY_NAME "Company")
+set(PRODUCT_NAME "Product")
 configure_file(res/version.h.in ${CMAKE_CURRENT_BINARY_DIR}/src/version.h LF)
 
 # Objects

@@ -17,12 +17,13 @@ BEGIN
   BEGIN
     BLOCK "0409FDE9"
     BEGIN
-      VALUE "CompanyName",      "Company"
-      VALUE "ProductName",      "Product"
+      VALUE "CompanyName",      COMPANY_NAME
+      VALUE "LegalCopyright",   COMPANY_NAME
+      VALUE "ProductName",      PRODUCT_NAME
       VALUE "ProductVersion",   PROJECT_VERSION
-      VALUE "InternalName",     "Internal"
-      VALUE "OriginalFilename", "official.exe"
-      VALUE "FileDescription",  "Official"
+      VALUE "InternalName",     PROJECT_NAME
+      VALUE "OriginalFilename", PROJECT_NAME".exe"
+      VALUE "FileDescription",  PROJECT_DESCRIPTION
       VALUE "FileVersion",      PROJECT_VERSION
     END
   END

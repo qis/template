@@ -4,7 +4,7 @@ project(template DESCRIPTION "Template" VERSION 0.1.0 LANGUAGES CXX)
 # Version
 set(COMPANY_NAME "Company")
 set(PRODUCT_NAME "Product")
-configure_file(res/version.h.in ${CMAKE_CURRENT_BINARY_DIR}/src/version.h LF)
+configure_file(res/version.h.in ${CMAKE_BINARY_DIR}/src/version.h LF)
 
 # Objects
 file(GLOB_RECURSE headers CONFIGURE_DEPENDS src/company/*.hpp)
@@ -12,7 +12,7 @@ file(GLOB_RECURSE sources CONFIGURE_DEPENDS src/company/*.cpp)
 
 add_library(objects OBJECT ${sources})
 target_sources(objects PUBLIC FILE_SET HEADERS FILES ${headers})
-target_include_directories(objects PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/src src)
+target_include_directories(objects PUBLIC ${CMAKE_BINARY_DIR}/src src)
 target_compile_features(objects PUBLIC cxx_std_20)
 
 if(WIN32)

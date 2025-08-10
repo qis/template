@@ -11,7 +11,7 @@
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "installDir": "${sourceDir}/build/${presetName}/package",
-      "toolchainFile": "${sourceDir}/res/vcpkg.cmake",
+      "toolchainFile": "${sourceDir}/res/toolchain.cmake",
       "warnings": { "dev": false },
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": true,

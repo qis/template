@@ -30,6 +30,7 @@
         "cxx17"
       ]
     },
-    "benchmark"
+    "benchmark",
+    "toolchain"
   ]
 }

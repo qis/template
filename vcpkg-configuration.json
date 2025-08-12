@@ -9,7 +9,7 @@
     {
       "kind": "git",
       "repository": "https://github.com/qis/ports",
-      "baseline": "2b9ecb5d612f8bf81c412e1a0e2e3f84739e7467",
+      "baseline": "ddff1ca44a33bd2232bf77f83a71ea04b16f398a",
       "packages": [ "spdlog", "toolchain", "vcpkg-boost" ]
     }
   ],

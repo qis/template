@@ -34,17 +34,6 @@ set(ENV{VCPKG_DISABLE_METRICS} "ON")
 include("${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 include("${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/toolchain.cmake")
 
-# Triplet
-string(REGEX MATCH "-windows-(x86|x64)-(debug|release)$" _ "${VCPKG_TARGET_TRIPLET}")
-if(NOT CMAKE_MATCH_COUNT EQUAL 2)
-  message(FATAL_ERROR "Invalid VCPKG_TARGET_TRIPLET: ${VCPKG_TARGET_TRIPLET}")
-endif()
-if(CMAKE_MATCH_2 STREQUAL debug)
-  set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "")
-else()
-  set(CMAKE_BUILD_TYPE "Release" CACHE STRING "")
-endif()
-
 # Standard
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "")
 set(CMAKE_CXX_EXTENSIONS OFF CACHE BOOL "")

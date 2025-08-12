@@ -34,6 +34,9 @@ target_link_libraries(main PRIVATE objects)
 
 # Tests
 if(BUILD_TESTS)
+  set_property(GLOBAL PROPERTY CTEST_TARGETS_ADDED 1)
+  enable_testing()
+
   add_executable(tests src/tests.cpp src/main.rc)
   target_link_libraries(tests PRIVATE objects)
 

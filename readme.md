@@ -84,3 +84,28 @@ http {
 
 ## Vcpkg Downloads
 Uses a local cache in `.cache/vcpkg/downloads` if the environment variable `VCPKG_DOWNLOADS` is not set.
+
+## Visual Studio Code
+Tested with the following "CMake Tools" user configuration:
+
+```json
+"cmake.buildBeforeRun": true,
+"cmake.configureOnOpen": false,
+"cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
+"cmake.ctest.testExplorerIntegrationEnabled": true,
+"cmake.deleteBuildDirOnCleanConfigure": true,
+"cmake.enableAutomaticKitScan": false,
+"cmake.ignoreCMakeListsMissing": true,
+"cmake.launchBehavior": "breakAndReuseTerminal",
+"cmake.showConfigureWithDebuggerNotification": false,
+"cmake.showNotAllDocumentsSavedQuestion": false,
+"cmake.showOptionsMovedNotification": false,
+"cmake.useCMakePresets": "always",
+"cmake.pinnedCommands": [
+  "workbench.action.tasks.configureTaskRunner",
+  "workbench.action.tasks.runTask",
+  "workbench.action.tasks.debug"
+]
+```
+
+Tested with "C/C++" and "clangd" intellisense extensions.

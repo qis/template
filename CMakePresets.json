@@ -16,6 +16,9 @@
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": true,
         "CMAKE_VERBOSE_MAKEFILE": false
+      },
+      "environment": {
+        "VCPKG_HOST_TRIPLET": "company-windows-x64-release"
       }
     },
     {

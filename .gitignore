@@ -1,6 +1,7 @@
 RC*
 /*
 .*
+!/.vscode/
 !/res/
 !/src/
 !.clangd

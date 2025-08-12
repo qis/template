@@ -1,0 +1,58 @@
+{
+  // LLVM
+  "clangd.onConfigChanged": "restart",
+  "clangd.arguments": [
+    "--header-insertion=never",
+  ],
+
+  // CMake Tools
+  "cmake.configureOnOpen": true,
+  "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
+  "cmake.enableAutomaticKitScan": false,
+  "cmake.ignoreCMakeListsMissing": true,
+  "cmake.useCMakePresets": "always",
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask",
+    "workbench.action.tasks.debug"
+  ],
+
+  // CMake Tools: Debug
+  "cmake.debugConfig": {
+    "name": "Launch",
+    "type": "cppvsdbg",
+    "request": "launch",
+    "console": "integratedTerminal",
+    "program": "${command:cmake.launchTargetPath}",
+    "cwd": "${fileDirname}",
+    "stopAtEntry": false,
+    "environment": [],
+    "args": [],
+  },
+
+  // CMake Tools: Options
+  "cmake.options.statusBarVisibility": "hidden",
+  "cmake.options.advanced": {
+    "configurePreset": {
+      "statusBarVisibility": "compact"
+    },
+    "buildPreset": {
+      "statusBarVisibility": "hidden"
+    },
+    "buildTarget": {
+      "statusBarVisibility": "compact"
+    },
+    "launchTarget": {
+      "statusBarVisibility": "compact"
+    },
+    "build": {
+      "statusBarVisibility": "icon"
+    },
+    "debug": {
+      "statusBarVisibility": "icon"
+    },
+    "launch": {
+      "statusBarVisibility": "icon"
+    },
+  }
+}

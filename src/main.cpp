@@ -4,8 +4,8 @@
 
 int main() {
   try {
-    std::cout << company::random() << "\r\n";
-    std::cout << company::test() << std::endl;
+    std::cout << company::test() << "\r\n";
+    std::cout << company::random() << std::endl;
   }
   catch (const std::exception& e) {
     std::cerr << "Error: " << e.what() << std::endl;

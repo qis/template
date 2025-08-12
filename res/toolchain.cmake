@@ -20,9 +20,16 @@ set(VCPKG_INSTALL_OPTIONS "${VCPKG_INSTALL_OPTIONS};--clean-buildtrees-after-bui
 set(VCPKG_INSTALL_OPTIONS "${VCPKG_INSTALL_OPTIONS};--clean-packages-after-build")
 set(VCPKG_INSTALL_OPTIONS "${VCPKG_INSTALL_OPTIONS};--no-print-usage")
 
+if(NOT DEFINED ENV{VCPKG_DOWNLOADS})
+  set(ENV{VCPKG_DOWNLOADS} "${CMAKE_SOURCE_DIR}/.cache/vcpkg/downloads")
+endif()
+
 if(NOT DEFINED ENV{VCPKG_BINARY_SOURCES})
   set(ENV{VCPKG_BINARY_SOURCES} "clear;files,${CMAKE_SOURCE_DIR}/.cache/vcpkg/binaries,readwrite")
 endif()
+
+set(ENV{VCPKG_FORCE_SYSTEM_BINARIES} "ON")
+set(ENV{VCPKG_DISABLE_METRICS} "ON")
 
 include("${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 include("${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/toolchain.cmake")

@@ -2,14 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg-configuration.schema.json",
   "default-registry": {
     "kind": "git",
-    "repository": "git@github.com:qis/vcpkg",
+    "repository": "https://github.com/qis/vcpkg",
     "baseline": "dd3097e305afa53f7b4312371f62058d2e665320"
   },
   "registries": [
     {
       "kind": "git",
-      "repository": "git@github.com:qis/ports",
-      "baseline": "ec32cf4da55a32561d838626d14471267f69bb43",
+      "repository": "https://github.com/qis/ports",
+      "baseline": "2b9ecb5d612f8bf81c412e1a0e2e3f84739e7467",
       "packages": [ "spdlog", "toolchain", "vcpkg-boost" ]
     }
   ],

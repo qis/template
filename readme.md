@@ -1,8 +1,8 @@
 # Template
 C++20 project template that uses:
 
-* [`qis/vcpkg`](https://github.com/qis/vcpkg) - a mirrored vcpkg repository
-* [`qis/ports`](https://github.com/qis/ports) - a custom ports overlay
+* [`https://github.com/qis/vcpkg`](https://github.com/qis/vcpkg) - a mirrored vcpkg repository
+* [`https://github.com/qis/ports`](https://github.com/qis/ports) - a custom ports overlay
 
 ## CMake
 ```cmd
@@ -19,11 +19,19 @@ cmake --workflow x64-release
 build\x64-release\bin\benchmarks.exe
 ```
 
-## Cache
-Uses a local cache in `.cache/vcpkg/binaries` if the environment variable `VCPKG_BINARY_SOURCES`
-in [`CMakePresets.json`](CMakePresets.json) is not set.
+## Compiler Cache
+Uses a local compiler cache in `.cache/ccache` if the `ccache` executable is in `PATH`.
 
-The remove cache was tested on an nginx server with the following config:
+## Vcpkg Binary Sources
+Uses a local cache in `.cache/vcpkg/binaries` if the environment variable `VCPKG_BINARY_SOURCES` is not set.
+
+To use a remote cache, set the following environment variable:
+
+```cmd
+set VCPKG_BINARY_SOURCES=clear;http,http://localhost:80/vcpkg/cache/{name}/{version}/{sha},readwrite
+```
+
+The server has to support `GET` and `PUT` operations. A:
 
 ```nginx
 worker_processes 1;
@@ -35,11 +43,8 @@ events {
 http {
   include mime.types;
   default_type application/octet-stream;
-
-  sendfile on;
-  #tcp_nopush on;
   keepalive_timeout 65;
-  #gzip  on;
+  sendfile on;
 
   map $time_iso8601 $timestamp {
     ~^([0-9-]+)T([0-9:]+) "$1 $2";
@@ -65,24 +70,17 @@ http {
 
     access_log logs/access.log access;
 
-    location / {
-      root html;
-      index index.html index.htm;
-    }
-
-    #error_page 404 /404.html;
-    error_page 500 502 503 504 /50x.html;
-    location = /50x.html {
-      root html;
-    }
-
     location /vcpkg/cache {
       alias vcpkg/cache/;
       dav_methods PUT;
       dav_access user:rw group:rw all:rw;
+      create_full_put_path on;
       client_max_body_size 0;
       autoindex on;
     }
   }
 }
 ```
+
+## Vcpkg Downloads
+Uses a local cache in `.cache/vcpkg/downloads` if the environment variable `VCPKG_DOWNLOADS` is not set.

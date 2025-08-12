@@ -16,13 +16,6 @@
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": true,
         "CMAKE_VERBOSE_MAKEFILE": false
-      },
-      "environment": {
-        "VCPKG_DOWNLOADS": "${sourceDir}/.cache/vcpkg/downloads",
-        "VCPKG_BINARY_SOURCES": "clear;http,http://localhost:80/vcpkg/cache/{name}-{version}-{sha},readwrite",
-        "VCPKG_FORCE_SYSTEM_BINARIES": "ON",
-        "VCPKG_DISABLE_METRICS": "ON",
-        "VSLANG": "1033"
       }
     },
     {

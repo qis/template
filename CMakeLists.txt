@@ -47,7 +47,7 @@ endif()
 
 # Benchmarks
 if(BUILD_BENCHMARKS)
-  add_executable(benchmarks src/benchmarks.cpp src/main.manifest src/main.rc)
+  add_executable(benchmarks EXCLUDE_FROM_ALL src/benchmarks.cpp src/main.manifest src/main.rc)
   target_link_libraries(benchmarks PRIVATE objects)
 
   find_package(benchmark CONFIG REQUIRED)

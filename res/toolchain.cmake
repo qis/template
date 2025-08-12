@@ -30,6 +30,7 @@ endif()
 
 set(ENV{VCPKG_FORCE_SYSTEM_BINARIES} "ON")
 set(ENV{VCPKG_DISABLE_METRICS} "ON")
+set(VCPKG_APPLOCAL_DEPS OFF)
 
 include("${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 include("${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/toolchain.cmake")

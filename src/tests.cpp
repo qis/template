@@ -1,8 +1,8 @@
+#include <core/random.hpp>
 #include <gtest/gtest.h>
-#include <company/random.hpp>
 
-TEST(CompanyRandom, ReturnsNonEmptyString) {
-  EXPECT_FALSE(company::random().empty());
+TEST(Core, Random) {
+  EXPECT_FALSE(core::random().empty());
 }
 
 int main(int argc, char** argv) {

@@ -7,8 +7,8 @@ set(PRODUCT_NAME "Product")
 configure_file(res/version.h.in ${CMAKE_BINARY_DIR}/src/version.h LF)
 
 # Objects
-file(GLOB_RECURSE headers CONFIGURE_DEPENDS src/company/*.hpp)
-file(GLOB_RECURSE sources CONFIGURE_DEPENDS src/company/*.cpp)
+file(GLOB_RECURSE headers CONFIGURE_DEPENDS src/core/*.hpp)
+file(GLOB_RECURSE sources CONFIGURE_DEPENDS src/core/*.cpp)
 
 add_library(objects OBJECT ${sources})
 target_sources(objects PUBLIC FILE_SET HEADERS FILES ${headers})

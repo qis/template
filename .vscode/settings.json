@@ -1,4 +1,10 @@
 {
+  "editor.tabSize": 8,
+  "editor.indentSize": 2,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 120,
+  "files.eol": "\n",
+
   // C/C++
   "C_Cpp.intelliSenseEngine": "disabled",
 

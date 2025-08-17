@@ -1,10 +1,10 @@
 #pragma once
-#include <string>
 #include <boost/filesystem/path.hpp>
+#include <string>
 
-namespace company {
+namespace core {
 
 boost::filesystem::path test();
 std::string random();
 
-}  // namespace company
+}  // namespace core

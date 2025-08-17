@@ -2,12 +2,13 @@
 ---
 Standard: Latest
 ColumnLimit: 120
-LineEnding: CRLF
+LineEnding: LF
 UseTab: Never
 
 TabWidth: 8
-IndentWidth: 4
-AccessModifierOffset: -4
+IndentWidth: 2
+AccessModifierOffset: -2
+ContinuationIndentWidth: 2
 InsertNewlineAtEOF: true
 
 # Functions
@@ -19,7 +20,6 @@ AlignAfterOpenBracket: DontAlign
 AllowAllArgumentsOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: false
 PackConstructorInitializers: CurrentLine
-ContinuationIndentWidth: 4
 BinPackParameters: true
 BinPackArguments: true
 
@@ -32,17 +32,17 @@ PointerAlignment: Left
 AllowShortCaseExpressionOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: true
 AlignConsecutiveShortCaseStatements:
-    Enabled: true
-    AcrossComments: true
-    AcrossEmptyLines: true
-    AlignCaseColons: false
+  Enabled: true
+  AcrossComments: true
+  AcrossEmptyLines: true
+  AlignCaseColons: false
 
 # Breaks
 AllowShortCompoundRequirementOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: Never
 AlwaysBreakBeforeMultilineStrings: true
 BreakAfterAttributes: Never
-BreakAfterReturnType: AllDefinitions
+BreakAfterReturnType: None
 BreakBeforeBinaryOperators: None
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: AfterColon
@@ -52,10 +52,10 @@ BreakTemplateDeclarations: Yes
 # Braces
 BreakBeforeBraces: Custom
 BraceWrapping:
-    # Other AfterControlStatement values
-    # break AllowShortCompoundRequirementOnASingleLine.
-    AfterControlStatement: Never
-    BeforeCatch: true
+  # Other AfterControlStatement values
+  # break AllowShortCompoundRequirementOnASingleLine.
+  AfterControlStatement: Never
+  BeforeCatch: true
 
 # Qualifiers
 QualifierAlignment: Custom
@@ -91,8 +91,8 @@ IncludeCategories:
   - Regex: '^"'
     Priority: 0
 
-  # Company
-  - Regex: '^<company/'
+  # Project
+  - Regex: '^<core/'
     Priority: 1
 
   # C Standard Library
@@ -147,7 +147,7 @@ IncludeCategories:
   - Regex: '^<(gdiplus|dwrite|d2d1|d3d11)\.h>$'
     Priority: 15
 
-  # Windows Components
+  # Third Party
   - Regex: '^<.*\..*>$'
     Priority: 2
 ...

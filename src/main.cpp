@@ -1,11 +1,11 @@
-#include <company/random.hpp>
+#include <core/random.hpp>
 #include <iostream>
 #include <cstdlib>
 
 int main() {
   try {
-    std::cout << company::test() << "\r\n";
-    std::cout << company::random() << std::endl;
+    std::cout << core::test() << "\r\n";
+    std::cout << core::random() << std::endl;
   }
   catch (const std::exception& e) {
     std::cerr << "Error: " << e.what() << std::endl;

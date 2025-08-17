@@ -63,7 +63,7 @@ set VCPKG_BINARY_SOURCES=clear;http,http://localhost:80/vcpkg/cache/{name}/{vers
 <details>
 <summary><b>Nginx Configuration</b></summary>
 
-Minimal `nginx(8)` configuration (`nginx.conf(5)`) for the vcpkg binaries cache.
+Minimal `nginx.conf(5)` configuration file for the vcpkg binaries cache.
 
 ```nginx
 worker_processes 1;

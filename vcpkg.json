@@ -1,14 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
-  "name": "official",
   "dependencies": [
     "boost-core",
+    "boost-heap",
     "boost-bimap",
     "boost-container",
     "boost-circular-buffer",
+    "boost-intrusive",
+    "boost-smart-ptr",
     "boost-lockfree",
     "boost-outcome",
-    "boost-heap",
     "boost-leaf",
     "boost-asio",
     "boost-beast",

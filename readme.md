@@ -93,7 +93,6 @@ Tested with the following "CMake Tools" user configuration:
 "cmake.configureOnOpen": false,
 "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
 "cmake.ctest.testExplorerIntegrationEnabled": true,
-"cmake.deleteBuildDirOnCleanConfigure": true,
 "cmake.enableAutomaticKitScan": false,
 "cmake.ignoreCMakeListsMissing": true,
 "cmake.launchBehavior": "breakAndReuseTerminal",
@@ -109,3 +108,8 @@ Tested with the following "CMake Tools" user configuration:
 ```
 
 Tested with "C/C++" and "clangd" intellisense extensions.
+
+<!--
+`cmake -E time build.cmd` - 16m without vcpkg cache and ccache
+`cmake -E time build.cmd` -  3m after deleting build directory
+-->

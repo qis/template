@@ -7,7 +7,6 @@
       "request": "launch",
       "console": "integratedTerminal",
       "program": "${command:cmake.launchTargetPath}",
-      "cwd": "${fileDirname}",
       "stopAtEntry": false,
       "environment": [],
       "args": [],

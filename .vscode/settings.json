@@ -1,12 +1,15 @@
 {
-  // LLVM
+  // C/C++
+  "C_Cpp.intelliSenseEngine": "disabled",
+
+  // Clang
+  "clangd.path": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\Llvm\\x64\\bin\\clangd.exe",
   "clangd.onConfigChanged": "restart",
   "clangd.arguments": [
     "--header-insertion=never",
   ],
 
   // CMake Tools
-  "cmake.configureOnOpen": true,
   "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
   "cmake.enableAutomaticKitScan": false,
   "cmake.ignoreCMakeListsMissing": true,

@@ -19,9 +19,9 @@ if(WIN32)
   target_compile_definitions(objects PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN)
 endif()
 
-find_package(Boost CONFIG REQUIRED COMPONENTS core system
-  bimap container circular_buffer lockfree outcome heap leaf
-  asio beast json url filesystem process program_options)
+find_package(Boost CONFIG REQUIRED COMPONENTS core
+  heap bimap container circular_buffer intrusive smart_ptr lockfree
+  outcome leaf asio beast json url filesystem process program_options)
 target_link_libraries(objects PUBLIC ${Boost_LIBRARIES})
 
 find_package(spdlog CONFIG REQUIRED)
@@ -33,37 +33,42 @@ set_target_properties(main PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 target_link_libraries(main PRIVATE objects)
 
 # Tests
-if(BUILD_TESTS)
-  set_property(GLOBAL PROPERTY CTEST_TARGETS_ADDED 1)
-  enable_testing()
+set_property(GLOBAL PROPERTY CTEST_TARGETS_ADDED 1)
+enable_testing()
 
-  add_executable(tests src/tests.cpp src/main.rc)
-  target_link_libraries(tests PRIVATE objects)
+add_executable(tests src/tests.cpp src/main.manifest src/main.rc)
+target_link_libraries(tests PRIVATE objects)
 
-  find_package(GTest CONFIG REQUIRED)
-  target_link_libraries(tests PRIVATE GTest::gtest GTest::gmock)
+find_package(GTest CONFIG REQUIRED)
+target_link_libraries(tests PRIVATE GTest::gtest GTest::gmock)
 
-  include(CTest)
-  include(GoogleTest)
-  gtest_discover_tests(tests DISCOVERY_MODE POST_BUILD DISCOVERY_TIMEOUT 10)
+include(CTest)
+include(GoogleTest)
+gtest_discover_tests(tests DISCOVERY_MODE POST_BUILD DISCOVERY_TIMEOUT 10)
+
+if(NOT BUILD_TESTS)
+  set_target_properties(tests PROPERTIES EXCLUDE_FROM_ALL ON)
 endif()
 
 # Benchmarks
-if(BUILD_BENCHMARKS)
-  add_executable(benchmarks EXCLUDE_FROM_ALL src/benchmarks.cpp src/main.manifest src/main.rc)
-  target_link_libraries(benchmarks PRIVATE objects)
+add_executable(benchmarks src/benchmarks.cpp src/main.manifest src/main.rc)
+target_link_libraries(benchmarks PRIVATE objects)
 
-  find_package(benchmark CONFIG REQUIRED)
-  target_link_libraries(benchmarks PRIVATE benchmark::benchmark)
+find_package(benchmark CONFIG REQUIRED)
+target_link_libraries(benchmarks PRIVATE benchmark::benchmark)
+
+if(NOT BUILD_BENCHMARKS)
+  set_target_properties(benchmarks PROPERTIES EXCLUDE_FROM_ALL ON)
 endif()
 
-# Install
+# Release
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
+  # Install
   install(TARGETS main RUNTIME DESTINATION .)
-endif()
 
-# Package
-set(CPACK_GENERATOR "7Z")
-set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}")
-set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
-include(CPack)
+  # Package
+  set(CPACK_GENERATOR "7Z")
+  set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}")
+  set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
+  include(CPack)
+endif()

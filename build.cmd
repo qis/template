@@ -1,14 +1,20 @@
 @echo off
 setlocal EnableDelayedExpansion
-
-for %%p in (x64-debug x64-release x86-debug x86-release) do (
-    echo Running cmake --workflow %%p
-    cmake --workflow %%p
-    if !ERRORLEVEL! neq 0 (
-        echo Error: cmake --workflow %%p failed with error level !ERRORLEVEL!
-        exit /b !ERRORLEVEL!
+set presets=x64-debug x64-lint x64-coverage x64-release x86-debug x86-lint x86-coverage x86-release
+if "%*" neq "" set presets=%*
+for %%p in (%presets%) do (
+  cmake --workflow %%p
+  if !errorlevel! neq 0 (
+    echo Error: "cmake --workflow %%p" failed with error code !errorlevel!
+    exit /b !errorlevel!
+  )
+  echo %%p | findstr /i "coverage" >nul
+  if !errorlevel! equ 0 (
+    call build\%%p\report.cmd
+    if !errorlevel! neq 0 (
+      echo Error: "build\%%p\report.cmd" failed with error code !errorlevel!
+      exit /b !errorlevel!
     )
+  )
 )
-
-echo All workflow presets completed successfully.
 endlocal

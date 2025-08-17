@@ -1,107 +1,78 @@
-# Clang-Format 20
+# Clang-Format 19
 ---
-BasedOnStyle: LLVM
+Standard: Latest
+ColumnLimit: 120
+LineEnding: CRLF
+UseTab: Never
 
-# Columns
-ColumnLimit: 100
+TabWidth: 8
+IndentWidth: 4
+AccessModifierOffset: -4
+InsertNewlineAtEOF: true
 
-# Indent
-IndentWidth: 2
-ConstructorInitializerIndentWidth: 2
-ContinuationIndentWidth: 2
-IndentExternBlock: NoIndent
-IndentPPDirectives: None
+# Functions
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
+
+# Arguments
+AlignAfterOpenBracket: DontAlign
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+PackConstructorInitializers: CurrentLine
+ContinuationIndentWidth: 4
+BinPackParameters: true
+BinPackArguments: true
 
 # Alignment
-AlignAfterOpenBracket: AlwaysBreak
-AlignArrayOfStructures: Right
-AlignConsecutiveMacros: Consecutive
-AlignEscapedNewlines: LeftWithLastLine
-AlignOperands: AlignAfterOperator
+AlignArrayOfStructures: Left
+BitFieldColonSpacing: None
 PointerAlignment: Left
-QualifierAlignment: Left
-ReferenceAlignment: Left
 
-AlignConsecutiveShortCaseStatements:
-  Enabled: true
-  AcrossEmptyLines: true
-  AcrossComments: true
-  AlignCaseColons: false
-
-# Line Breaks
-AllowAllArgumentsOnNextLine: true
-AllowAllParametersOfDeclarationOnNextLine: false
-AllowBreakBeforeNoexceptSpecifier: OnlyWithParen
-AllowShortBlocksOnASingleLine: Empty
+# Case
+AllowShortCaseExpressionOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: true
+AlignConsecutiveShortCaseStatements:
+    Enabled: true
+    AcrossComments: true
+    AcrossEmptyLines: true
+    AlignCaseColons: false
+
+# Breaks
 AllowShortCompoundRequirementOnASingleLine: true
-AllowShortEnumsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: Empty
-AllowShortLambdasOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
 AlwaysBreakBeforeMultilineStrings: true
-
-BreakBeforeBraces: Custom
-BraceWrapping:
-  AfterControlStatement: MultiLine
-  AfterFunction: false
-  BeforeCatch: true
-  BeforeWhile: false
-  SplitEmptyFunction: false
-  SplitEmptyRecord: false
-  SplitEmptyNamespace: false
-
-BreakBeforeTernaryOperators: false
+BreakAfterAttributes: Never
+BreakAfterReturnType: AllDefinitions
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
-BreakStringLiterals: true
 BreakTemplateDeclarations: Yes
 
-InsertNewlineAtEOF: true
-KeepEmptyLinesAtTheStartOfBlocks: false
-KeepEmptyLinesAtEOF: false
-LineEnding: LF
+# Braces
+BreakBeforeBraces: Custom
+BraceWrapping:
+    # Other AfterControlStatement values
+    # break AllowShortCompoundRequirementOnASingleLine.
+    AfterControlStatement: Never
+    BeforeCatch: true
 
-MaxEmptyLinesToKeep: 2
+# Qualifiers
+QualifierAlignment: Custom
+QualifierOrder: [ friend, static, constexpr, inline, const, type ]
+
+# Preprocessor
+IndentPPDirectives: None
+SkipMacroDefinitionBody: true
+
+# Empty Lines
+EmptyLineBeforeAccessModifier: LogicalBlock
 SeparateDefinitionBlocks: Always
-
-# Packing
-BinPackArguments: false
-BinPackParameters: false
-PackConstructorInitializers: Never
-
-# Spaces
-BitFieldColonSpacing: None
-Cpp11BracedListStyle: false
-SpaceAroundPointerQualifiers: Default
-
-SpaceBeforeParens: Custom
-SpaceBeforeParensOptions:
-  AfterForeachMacros: false
-  AfterIfMacros: false
-
-# Sorting
-SortUsingDeclarations: Never
-
-# Requires
-IndentRequiresClause: false
-RequiresClausePosition: SingleLine
-RequiresExpressionIndentation: OuterScope
+MaxEmptyLinesToKeep: 2
 
 # Comments
-CommentPragmas: '^ (NOTE|TODO):'
+ReflowComments: false
 SpacesBeforeTrailingComments: 2
-ReflowComments: true
-
-# Penalties
-PenaltyBreakAssignment: 1
-PenaltyBreakFirstLessLess: 0
-PenaltyBreakBeforeFirstCallParameter: 10
-PenaltyExcessCharacter: 100
-PenaltyIndentedWhitespace: 10
-PenaltyReturnTypeOnItsOwnLine: 500
----
-Language: Cpp
-Standard: Latest
 
 # Integers
 IntegerLiteralSeparator:
@@ -114,103 +85,69 @@ IntegerLiteralSeparator:
 
 # Includes
 SortIncludes: CaseInsensitive
-
+IncludeBlocks: Preserve
 IncludeCategories:
   # Relative Paths
   - Regex: '^"'
+    Priority: 0
+
+  # Company
+  - Regex: '^<company/'
     Priority: 1
 
-  # Project Headers
-  - Regex: '^<official/'
-    Priority: 2
-    SortPriority: 0
-
-  # Windows Core Headers
-  - Regex: '^<(ntifs|windows|winternl)\.h>'
-    Priority: 6
-
-  # Windows NT Headers
-  - Regex: '^<(ntddk|ntddkbd|ntddmou|ntstatus|wdm|winioctl)\.h>'
-    Priority: 7
-
-  # Windows DirectX Headers
-  - Regex: '^<(d2d.*|d3d.*|dxgi.*|dwrite.*|dinput.*|dcomp)\.h>'
-    Priority: 8
-
-  # Windows Runtime Headers
-  - Regex: '^<wrl/'
-    Priority: 9
-
-  # Windows Headers
-  - Regex: '^<(wdf|commctrl|shellapi|dwmapi|tlhelp32|winsock2|ws2tcpip|mswsock|psapi|unknwn)\.h>'
-    Priority: 10
-
-  # Benchmark Headers
-  - Regex: '^<benchmark/'
-    Priority: 3
-    SortPriority: 0
-
-  # Test Framework Headers
-  - Regex: '^<(doctest|gtest|gmock)/'
-    Priority: 4
-    SortPriority: 0
-
-  # Library Headers
-  - Regex: '^<.*\.'
+  # C Standard Library
+  - Regex: '^<(assert|complex|ctype|errno|fenv|float|inttypes|iso646|limits|locale|math|setjmp|signal|stdalign|stdarg|stdatomic|stdbit|stdbool|stdckdint|stddef|stdint|stdio|stdlib|stdmchar|stdnoreturn|string|tgmath|threads|time|uchar|wchar|wctype)\.h>'
     Priority: 5
 
-  # C Compatibility Headers
-  - Regex: '^<c(a|c|e|f|i|l|m|s|t|u|w)'
-    Priority: 12
+  # C Standard Library (C++ Wrappers)
+  - Regex: '^<c(assert|complex|ctype|errno|fenv|float|inttypes|iso646|limits|locale|math|setjmp|signal|stdalign|stdarg|stdbool|stddef|stdint|stdio|stdlib|string|tgmath|time|uchar|wchar|wctype)>$'
+    Priority: 4
 
-  # C++ Standard Library Headers
-  - Regex: '^<'
+  # C++ Standard Library
+  - Regex: '^<[^\.\/]+>$'
+    Priority: 3
+
+  # Windows Sockets
+  - Regex: '^<(winsock2|ws2tcpip)\.h>$'
+    Priority: 6
+
+  # Windows
+  - Regex: '^<windows\.h>$'
+    Priority: 7
+
+  # Windows NT
+  - Regex: '^<ntstatus\.h>$'
+    Priority: 8
+
+  # Windows Kernel
+  - Regex: '^<winternl\.h>$'
+    Priority: 9
+
+  # Windows Core
+  - Regex: '^<(lmcons|tchar)\.h>$'
+    Priority: 10
+
+  # Windows System
+  - Regex: '^<(bcrypt|ncrypt|pdh|psapi|tlhelp32|wincrypt)\.h>$'
     Priority: 11
 
-# Sources: a.hpp is main include for a.cpp, a_test.cpp, etc.
-IncludeIsMainRegex: '(_test|_win32|_posix)?$'
+  # Windows Networking
+  - Regex: '^<iphlpapi\.h>$'
+    Priority: 12
 
-# Headers: a.hpp, a_base.hpp, etc. are main includes for a.cpp
-IncludeIsMainSourceRegex: '(_base|_impl)?$'
+  # Windows OLE
+  - Regex: '^<(objbase|ole2)\.h>$'
+    Priority: 13
 
-# Macros
-SkipMacroDefinitionBody: true  # false
+  # Windows Common Controls
+  - Regex: '^<(commctrl|shellapi|shlobj|windowsx)\.h>$'
+    Priority: 14
 
-AttributeMacros:
-  - NTAPI
-  - WINAPI
-  - __cdecl
-  - __stdcall
-  - __fastcall
-  - __vectorcall
-  - __declspec(dllimport)
-  - __declspec(dllexport)
-  - __declspec(noinline)
-  - __declspec(noreturn)
-  - __capability
+  # Windows Graphics
+  - Regex: '^<(gdiplus|dwrite|d2d1|d3d11)\.h>$'
+    Priority: 15
 
-ForEachMacros:
-  - foreach
-  - Q_FOREACH
-  - BOOST_FOREACH
-
-IfMacros:
-  - BOOST_LIKELY
-  - BOOST_UNLIKELY
-
-StatementAttributeLikeMacros:
-  - Q_EMIT
-
-StatementMacros:
-  - Q_UNUSED
-  - QT_REQUIRE_VERSION
-
-WhitespaceSensitiveMacros:
-  - BOOST_PP_STRINGIZE
-
-MacroBlockBegin: '^BEGIN_MSG_MAP'
-MacroBlockEnd: '^END_MSG_MAP'
----
-Language: JavaScript
-JavaScriptQuotes: Single
+  # Windows Components
+  - Regex: '^<.*\..*>$'
+    Priority: 2
 ...

@@ -13,6 +13,7 @@ RC*
 !/build.cmd
 !/CMakeLists.txt
 !/CMakePresets.json
+!/format.cmd
 !/readme.md
 !/vcpkg.json
 !/vcpkg-configuration.json

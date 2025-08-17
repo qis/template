@@ -1,67 +1,45 @@
 {
+  // Settings
   "editor.tabSize": 8,
   "editor.indentSize": 2,
+  "editor.detectIndentation": false,
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 120,
+  "editor.rulers": [ 120 ],
   "files.eol": "\n",
 
-  // C/C++
-  "C_Cpp.intelliSenseEngine": "disabled",
-
-  // Clang
-  "clangd.path": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\Llvm\\x64\\bin\\clangd.exe",
-  "clangd.onConfigChanged": "restart",
-  "clangd.arguments": [
-    "--header-insertion=never",
-  ],
-
-  // CMake Tools
+  // Extension: CMake Tools (ms-vscode.cmake-tools)
   "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
   "cmake.enableAutomaticKitScan": false,
-  "cmake.ignoreCMakeListsMissing": true,
   "cmake.useCMakePresets": "always",
-  "cmake.pinnedCommands": [
-    "workbench.action.tasks.configureTaskRunner",
-    "workbench.action.tasks.runTask",
-    "workbench.action.tasks.debug"
-  ],
-
-  // CMake Tools: Debug
   "cmake.debugConfig": {
     "name": "Launch",
     "type": "cppvsdbg",
     "request": "launch",
     "console": "integratedTerminal",
     "program": "${command:cmake.launchTargetPath}",
-    "cwd": "${fileDirname}",
+    "cwd": "${workspaceRoot}",
     "stopAtEntry": false,
     "environment": [],
     "args": [],
   },
 
-  // CMake Tools: Options
-  "cmake.options.statusBarVisibility": "hidden",
-  "cmake.options.advanced": {
-    "configurePreset": {
-      "statusBarVisibility": "compact"
-    },
-    "buildPreset": {
-      "statusBarVisibility": "hidden"
-    },
-    "buildTarget": {
-      "statusBarVisibility": "compact"
-    },
-    "launchTarget": {
-      "statusBarVisibility": "compact"
-    },
-    "build": {
-      "statusBarVisibility": "icon"
-    },
-    "debug": {
-      "statusBarVisibility": "icon"
-    },
-    "launch": {
-      "statusBarVisibility": "icon"
-    },
+  // Extension: clangd (llvm-vs-code-extensions.vscode-clangd)
+  "clangd.onConfigChanged": "restart",
+  "clangd.arguments": [
+    "--header-insertion=never"
+  ],
+
+  // Extension: C/C++ (ms-vscode.cpptools)
+  "C_Cpp.copilotHover": "disabled",
+  "C_Cpp.intelliSenseEngine": "disabled",
+
+  // Extension: Reflow Markdown
+  "reflowMarkdown.preferredLineLength": 100,
+
+  // Format
+  "[c][cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+    "editor.formatOnSave": true
   }
 }

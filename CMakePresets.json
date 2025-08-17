@@ -144,6 +144,24 @@
   ],
   "testPresets": [
     {
+      "name": "x86-debug",
+      "displayName": "X86 Debug",
+      "configurePreset": "x86-debug",
+      "output": {
+        "outputOnFailure": true,
+        "verbosity": "verbose"
+      }
+    },
+    {
+      "name": "x64-debug",
+      "displayName": "X64 Debug",
+      "configurePreset": "x64-debug",
+      "output": {
+        "outputOnFailure": true,
+        "verbosity": "verbose"
+      }
+    },
+    {
       "name": "x86-coverage",
       "displayName": "X86 Coverage",
       "configurePreset": "x86-coverage",

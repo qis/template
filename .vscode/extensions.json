@@ -2,10 +2,6 @@
   "recommendations": [
     "llvm-vs-code-extensions.vscode-clangd",
     "ms-vscode.cmake-tools",
-    "ms-vscode.cpptools",
-    "xaver.clang-format"
-  ],
-  "unwantedRecommendations": [
-    "llvm-vs-code-extensions.lldb-dap"
+    "ms-vscode.cpptools"
   ]
 }

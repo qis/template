@@ -3,5 +3,4 @@
 !.gitignore
 !/extensions.json
 !/keybindings.json
-!/launch.json
 !/settings.json

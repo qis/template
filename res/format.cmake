@@ -5,7 +5,7 @@ cmake_path(CONVERT "${VSWHERE_ROOT}" TO_CMAKE_PATH_LIST VSWHERE_ROOT NORMALIZE)
 
 find_program(VSWHERE NAMES vswhere REQUIRED PATHS "${VSWHERE_ROOT}")
 list(APPEND VSWHERE -nologo -nocolor -utf8 -format value -property resolvedInstallationPath)
-list(APPEND VSWHERE -products "*" -requires Microsoft.VisualStudio.Component.Vcpkg -latest)
+list(APPEND VSWHERE -products "*" -requires Microsoft.VisualStudio.Component.VC.Llvm.Clang -latest)
 execute_process(COMMAND ${VSWHERE} ENCODING UTF-8 OUTPUT_VARIABLE VS_ROOT OUTPUT_STRIP_TRAILING_WHITESPACE)
 cmake_path(CONVERT "${VS_ROOT}" TO_CMAKE_PATH_LIST VS_ROOT NORMALIZE)
 

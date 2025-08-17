@@ -60,12 +60,67 @@ build\x64-release\bin\benchmarks.exe
 set VCPKG_BINARY_SOURCES=clear;http,http://localhost:80/vcpkg/cache/{name}/{version}/{sha},readwrite
 ```
 
+<details>
+<summary><b>Nginx Configuration</b></summary>
+Minimal `nginx(1)` configuration file for the vcpkg binaries cache.
+
+```nginx
+worker_processes 1;
+
+events {
+  worker_connections 1024;
+}
+
+http {
+  include mime.types;
+  default_type application/octet-stream;
+  keepalive_timeout 65;
+  sendfile on;
+
+  map $time_iso8601 $timestamp {
+    ~^([0-9-]+)T([0-9:]+) "$1 $2";
+  }
+
+  map $remote_addr $address {
+    ~^(..............) "$1 ";
+    ~^(.............) "$1  ";
+    ~^(............) "$1   ";
+    ~^(...........) "$1    ";
+    ~^(..........) "$1     ";
+    ~^(.........) "$1      ";
+    ~^(........) "$1       ";
+    ~^(.......) "$1        ";
+    default $remote_addr;
+  }
+
+  log_format access '[$timestamp] $address $status "$request" $body_bytes_sent';
+
+  server {
+    listen 80;
+    server_name localhost;
+
+    access_log logs/access.log access;
+
+    location /vcpkg/cache {
+      alias vcpkg/cache/;
+      dav_methods PUT;
+      dav_access user:rw group:rw all:rw;
+      create_full_put_path on;
+      client_max_body_size 0;
+      autoindex on;
+    }
+  }
+}
+```
+
+</details>
+
 ## Visual Studio Code
 The following extensions are recommended for development of this project.
 
 ### Extension: C/C++
-The [ms-vscode.cpptools][cpptools] extension is used for debugging. The default launch config can be
-overwritten by creating the `.vscode/launch.json` file.
+The [ms-vscode.cpptools][cpptools] extension is used for debugging.<br/>
+The default launch config can be overwritten by creating the `.vscode/launch.json` file.
 
 ### Extension: clangd
 The [llvm-vs-code-extensions.vscode-clangd][clangd] extension is used to show intellisense
@@ -130,59 +185,6 @@ The following keyboard shortcuts are recommended.
   { "key": "pausebreak",  "command": "workbench.action.togglePanel" }
 ]
 ```
-
-<!--
-Minimal `nginx(1)` configuration file for the vcpkg binaries cache.
-
-```nginx
-worker_processes 1;
-
-events {
-  worker_connections 1024;
-}
-
-http {
-  include mime.types;
-  default_type application/octet-stream;
-  keepalive_timeout 65;
-  sendfile on;
-
-  map $time_iso8601 $timestamp {
-    ~^([0-9-]+)T([0-9:]+) "$1 $2";
-  }
-
-  map $remote_addr $address {
-    ~^(..............) "$1 ";
-    ~^(.............) "$1  ";
-    ~^(............) "$1   ";
-    ~^(...........) "$1    ";
-    ~^(..........) "$1     ";
-    ~^(.........) "$1      ";
-    ~^(........) "$1       ";
-    ~^(.......) "$1        ";
-    default $remote_addr;
-  }
-
-  log_format access '[$timestamp] $address $status "$request" $body_bytes_sent';
-
-  server {
-    listen 80;
-    server_name localhost;
-
-    access_log logs/access.log access;
-
-    location /vcpkg/cache {
-      alias vcpkg/cache/;
-      dav_methods PUT;
-      dav_access user:rw group:rw all:rw;
-      create_full_put_path on;
-      client_max_body_size 0;
-      autoindex on;
-    }
-  }
-}
-```
--->
 
 [vcpkg]: https://github.com/qis/vcpkg
 [ports]: https://github.com/qis/ports

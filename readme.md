@@ -187,6 +187,29 @@ The following keyboard shortcuts are recommended.
 ]
 ```
 
+## Visual Studio
+Required Visual Studio components:
+
+```
+Workloads
+✅ Desktop development with C++
+   ✅ C++ CMake tools for Windows
+   ✅ Test Adapter for Google Test
+   ✅ vcpkg package manager
+
+Individual Components
+✅ Windows Universal C Runtime
+✅ C++ Clang Compiler for Windows
+```
+
+Recommended keyboard mappings:
+
+```
+F9  (Global) Debug.StepOut
+F10 (Global) Debug.StepOver
+F11 (Global) Debug.StepInto
+```
+
 [vcpkg]: https://github.com/qis/vcpkg
 [ports]: https://github.com/qis/ports
 [cmake]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools

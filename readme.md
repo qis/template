@@ -63,28 +63,73 @@ set VCPKG_BINARY_SOURCES=clear;http,http://localhost:80/vcpkg/cache/{name}/{vers
 ## Visual Studio Code
 The following extensions are recommended for development of this project.
 
-### Extension: CMake Tools
-The [ms-vscode.cmake-tools][cmake] extension is used to configure the project.
+### Extension: C/C++
+The [ms-vscode.cpptools][cpptools] extension is used for debugging. The default launch config can be
+overwritten by creating the `.vscode/launch.json` file.
 
 ### Extension: clangd
 The [llvm-vs-code-extensions.vscode-clangd][clangd] extension is used to show intellisense
 information with clang-tidy linter support and to automatically format the code on save.
 
-It is a good idea to set the `clangd` path to the same binary, that will be used by the `x64-lint`
-and `x86-lint` configure, build and workflow presets.
-
-```json
-"clangd.path": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\Llvm\\x64\\bin\\clangd.exe",
-```
-
-### Extension: C/C++
-The [ms-vscode.cpptools][cpptools] extension is used for debugging the executables.
-
-The default launch config can be overwritten by creating the `.vscode/launch.json` file.
+### Extension: CMake Tools
+The [ms-vscode.cmake-tools][cmake] extension is used to configure the project.
 
 ### Optional Extension: Reflow Markdown
 The [marvhen.reflow-markdown][markdown] extension can be used to reflow markdown files.<br/>
 The default keyboard shortcut is `ALT+Q`.
+
+### Settings
+The following user settings are recommended.
+
+```json
+{
+  "cmake.launchBehavior": "breakAndReuseTerminal",
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask",
+    "workbench.action.tasks.debug"
+  ],
+  "cmake.options.statusBarVisibility": "hidden",
+  "cmake.options.advanced": {
+    "configurePreset": {
+      "statusBarVisibility": "compact"
+    },
+    "buildPreset": {
+      "statusBarVisibility": "hidden"
+    },
+    "buildTarget": {
+      "statusBarVisibility": "compact"
+    },
+    "launchTarget": {
+      "statusBarVisibility": "compact"
+    },
+    "build": {
+      "statusBarVisibility": "icon"
+    },
+    "debug": {
+      "statusBarVisibility": "icon"
+    },
+    "launch": {
+      "statusBarVisibility": "icon"
+    }
+  }
+}
+```
+
+The following keyboard shortcuts are recommended.
+
+```json
+[
+  { "key": "ctrl+f5",     "command": "cmake.launchTarget" },
+  { "key": "f5",          "command": "cmake.debugTarget", "when": "!inDebugMode" },
+  { "key": "f5",          "command": "workbench.action.debug.pause", "when": "inDebugMode && debugState == 'running'" },
+  { "key": "f5",          "command": "workbench.action.debug.continue", "when": "inDebugMode && debugState != 'running'" },
+  { "key": "f9",          "command": "workbench.action.debug.stepOut" },
+  { "key": "f10",         "command": "workbench.action.debug.stepOver" },
+  { "key": "f11",         "command": "workbench.action.debug.stepInto" },
+  { "key": "pausebreak",  "command": "workbench.action.togglePanel" }
+]
+```
 
 <!--
 Minimal `nginx(1)` configuration file for the vcpkg binaries cache.

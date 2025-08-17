@@ -1,5 +1,5 @@
 {
-  // Settings
+  // Style
   "editor.tabSize": 8,
   "editor.indentSize": 2,
   "editor.detectIndentation": false,
@@ -8,9 +8,18 @@
   "editor.rulers": [ 120 ],
   "files.eol": "\n",
 
+  // Extension: C/C++ (ms-vscode.cpptools)
+  "C_Cpp.copilotHover": "disabled",
+  "C_Cpp.intelliSenseEngine": "disabled",
+
+  // Extension: clangd (llvm-vs-code-extensions.vscode-clangd)
+  "clangd.path": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\Llvm\\x64\\bin\\clangd.exe",
+  "clangd.arguments": [],
+
   // Extension: CMake Tools (ms-vscode.cmake-tools)
   "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
   "cmake.enableAutomaticKitScan": false,
+  "cmake.ignoreCMakeListsMissing": true,
   "cmake.useCMakePresets": "always",
   "cmake.debugConfig": {
     "name": "Launch",
@@ -23,16 +32,6 @@
     "environment": [],
     "args": [],
   },
-
-  // Extension: clangd (llvm-vs-code-extensions.vscode-clangd)
-  "clangd.onConfigChanged": "restart",
-  "clangd.arguments": [
-    "--header-insertion=never"
-  ],
-
-  // Extension: C/C++ (ms-vscode.cpptools)
-  "C_Cpp.copilotHover": "disabled",
-  "C_Cpp.intelliSenseEngine": "disabled",
 
   // Extension: Reflow Markdown
   "reflowMarkdown.preferredLineLength": 100,

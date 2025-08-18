@@ -67,6 +67,12 @@ build\x64-release\bin\benchmarks.exe
 set VCPKG_BINARY_SOURCES=clear;http,http://localhost:80/vcpkg/cache/{name}/{version}/{sha},readwrite
 ```
 
+### Coverage
+![x64-coverage](res/x64-coverage.png)
+
+### Lint
+![x64-lint](res/x64-lint.png)
+
 <details>
 <summary><b>Nginx Configuration</b></summary>
 

@@ -120,8 +120,45 @@ http {
 The following extensions are recommended for development of this project.
 
 ### Extension: C/C++
-The [ms-vscode.cpptools][cpptools] extension is used for debugging.<br/>
-The default launch config can be overwritten by creating the `.vscode/launch.json` file.
+The [ms-vscode.cpptools][cpptools] extension is used for debugging.
+
+The `cmake.debugTarget` command uses the `cmake.debugConfig` settings in `.vscode/settings.json`:
+
+```json
+{
+  "cmake.debugConfig": {
+    "name": "Launch",
+    "type": "cppvsdbg",
+    "request": "launch",
+    "console": "internalConsole",
+    "program": "${command:cmake.launchTargetPath}",
+    "cwd": "${workspaceRoot}",
+    "stopAtEntry": false,
+    "environment": [],
+    "args": [],
+  }
+}
+```
+
+The `workbench.action.debug.start` command can be configured by creating `.vscode/launch.json`:
+
+```json
+{
+  "configurations": [
+    {
+      "name": "Launch",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "console": "internalConsole",
+      "program": "${command:cmake.launchTargetPath}",
+      "cwd": "${workspaceRoot}",
+      "stopAtEntry": false,
+      "environment": [],
+      "args": [],
+    }
+  ]
+}
+```
 
 ### Extension: clangd
 The [llvm-vs-code-extensions.vscode-clangd][clangd] extension is used to show intellisense
@@ -139,6 +176,18 @@ The following user settings are recommended.
 
 ```json
 {
+  // Debug
+  "debug.showInStatusBar": "never",
+  "debug.toolBarLocation": "commandCenter",
+  "debug.internalConsoleOptions": "openOnSessionStart",
+
+  // Terminal
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.rightClickBehavior": "paste",
+
+  // Extension: CMake Tools (ms-vscode.cmake-tools)
   "cmake.launchBehavior": "breakAndReuseTerminal",
   "cmake.pinnedCommands": [
     "workbench.action.tasks.configureTaskRunner",

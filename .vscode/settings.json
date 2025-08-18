@@ -14,7 +14,7 @@
 
   // Extension: clangd (llvm-vs-code-extensions.vscode-clangd)
   "clangd.path": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\Llvm\\x64\\bin\\clangd.exe",
-  "clangd.arguments": [],
+  "clangd.arguments": [ "--header-insertion=never" ],
 
   // Extension: CMake Tools (ms-vscode.cmake-tools)
   "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
@@ -25,7 +25,7 @@
     "name": "Launch",
     "type": "cppvsdbg",
     "request": "launch",
-    "console": "integratedTerminal",
+    "console": "internalConsole",
     "program": "${command:cmake.launchTargetPath}",
     "cwd": "${workspaceRoot}",
     "stopAtEntry": false,

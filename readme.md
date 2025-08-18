@@ -4,6 +4,13 @@ C++20 project template that uses:
 * [`vcpkg`][vcpkg] - a mirrored vcpkg repository
 * [`ports`][ports] - a custom ports overlay
 
+## CMake
+Add the Visual Studio 2022 `cmake.exe` directory to the system `Path` environment variable.
+
+```
+C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin
+```
+
 ## Command Line
 This project provides CMake configure, build, test and workflow presets.
 

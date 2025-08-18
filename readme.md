@@ -181,7 +181,7 @@ The default keyboard shortcut is `ALT+Q`.
 ### Settings
 The following user settings are recommended.
 
-```json
+```json5
 {
   // Debug
   "debug.showInStatusBar": "never",

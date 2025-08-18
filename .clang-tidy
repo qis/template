@@ -25,6 +25,7 @@ llvm-prefer-static-over-anonymous-namespace,\
 misc-*,\
 -misc-include-cleaner,\
 -misc-unused-parameters,\
+-misc-use-anonymous-namespace,\
 -misc-throw-by-value-catch-by-reference,\
 performance-*,\
 readability-*,\

@@ -1,7 +1,7 @@
 #include <core/random.hpp>
 #include <benchmark/benchmark.h>
 
-void random(benchmark::State& state) {
+static void random(benchmark::State& state) {
   for (auto _ : state) {
     auto str = core::random();
     benchmark::DoNotOptimize(str);

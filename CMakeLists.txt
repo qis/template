@@ -21,11 +21,14 @@ endif()
 
 find_package(Boost CONFIG REQUIRED COMPONENTS core
   heap bimap container circular_buffer intrusive smart_ptr lockfree
-  outcome leaf asio beast json url filesystem process program_options)
+  outcome leaf asio beast json url filesystem uuid process program_options)
 target_link_libraries(objects PUBLIC ${Boost_LIBRARIES})
 
 find_package(spdlog CONFIG REQUIRED)
 target_link_libraries(objects PUBLIC spdlog::spdlog)
+
+find_package(WIL CONFIG REQUIRED)
+target_link_libraries(objects PUBLIC WIL::WIL)
 
 # Application
 add_executable(main src/main.cpp src/main.manifest src/main.rc)

@@ -15,6 +15,7 @@
     "boost-beast",
     "boost-json",
     "boost-url",
+    "boost-uuid",
     "boost-filesystem",
     "boost-process",
     "boost-program-options",
@@ -25,6 +26,7 @@
         "wchar"
       ]
     },
+    "wil",
     {
       "name": "gtest",
       "features": [

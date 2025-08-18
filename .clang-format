@@ -124,7 +124,7 @@ IncludeCategories:
     Priority: 9
 
   # Windows Core
-  - Regex: '^<(lmcons|tchar)\.h>$'
+  - Regex: '^<(lmcons|shlobj_core|tchar)\.h>$'
     Priority: 10
 
   # Windows System

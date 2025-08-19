@@ -53,8 +53,8 @@ set(CMAKE_CXX_SCAN_FOR_MODULES OFF CACHE BOOL "")
 
 # Warnings
 cmake_policy(SET CMP0092 NEW)
-string(APPEND CMAKE_C_FLAGS_INIT " /W4 /wd4100")
-string(APPEND CMAKE_CXX_FLAGS_INIT " /W4 /wd4100")
+string(APPEND CMAKE_C_FLAGS_INIT " /utf-8 /W4 /wd4100")
+string(APPEND CMAKE_CXX_FLAGS_INIT " /utf-8 /W4 /wd4100")
 
 # Debug Information
 cmake_policy(SET CMP0141 NEW)

@@ -3,6 +3,7 @@
   "editor.tabSize": 8,
   "editor.indentSize": 2,
   "editor.detectIndentation": false,
+  "editor.unicodeHighlight.allowedLocales": { "ru": true },
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 120,
   "editor.rulers": [ 120 ],

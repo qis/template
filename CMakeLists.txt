@@ -39,7 +39,7 @@ target_link_libraries(main PRIVATE objects)
 set_property(GLOBAL PROPERTY CTEST_TARGETS_ADDED 1)
 enable_testing()
 
-add_executable(tests src/tests.cpp src/main.manifest src/main.rc)
+add_executable(tests src/tests.cpp src/main.manifest)
 target_link_libraries(tests PRIVATE objects)
 
 find_package(GTest CONFIG REQUIRED)
@@ -54,7 +54,7 @@ if(NOT BUILD_TESTS)
 endif()
 
 # Benchmarks
-add_executable(benchmarks src/benchmarks.cpp src/main.manifest src/main.rc)
+add_executable(benchmarks src/benchmarks.cpp src/main.manifest)
 target_link_libraries(benchmarks PRIVATE objects)
 
 find_package(benchmark CONFIG REQUIRED)

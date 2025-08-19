@@ -32,6 +32,7 @@ readability-*,\
 -readability-avoid-const-params-in-decls,\
 -readability-braces-around-statements,\
 -readability-container-size-empty,\
+-readability-convert-member-functions-to-static,\
 -readability-function-cognitive-complexity,\
 -readability-function-size,\
 -readability-identifier-length,\

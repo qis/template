@@ -87,67 +87,71 @@ IntegerLiteralSeparator:
 SortIncludes: CaseInsensitive
 IncludeBlocks: Preserve
 IncludeCategories:
-  # Relative Paths
+  # Relative
   - Regex: '^"'
     Priority: 0
 
+  # Special
+  - Regex: '^<(benchmark/benchmark|gtest/gtest)\.h>$'
+    Priority: 1
+
   # Project
   - Regex: '^<core/'
-    Priority: 1
+    Priority: 2
 
   # C Standard Library
   - Regex: '^<(assert|complex|ctype|errno|fenv|float|inttypes|iso646|limits|locale|math|setjmp|signal|stdalign|stdarg|stdatomic|stdbit|stdbool|stdckdint|stddef|stdint|stdio|stdlib|stdmchar|stdnoreturn|string|tgmath|threads|time|uchar|wchar|wctype)\.h>'
-    Priority: 5
+    Priority: 6
 
   # C Standard Library (C++ Wrappers)
   - Regex: '^<c(assert|complex|ctype|errno|fenv|float|inttypes|iso646|limits|locale|math|setjmp|signal|stdalign|stdarg|stdbool|stddef|stdint|stdio|stdlib|string|tgmath|time|uchar|wchar|wctype)>$'
-    Priority: 4
+    Priority: 5
 
   # C++ Standard Library
   - Regex: '^<[^\.\/]+>$'
-    Priority: 3
+    Priority: 4
 
   # Windows Sockets
   - Regex: '^<(winsock2|ws2tcpip)\.h>$'
-    Priority: 6
+    Priority: 7
 
   # Windows
   - Regex: '^<windows\.h>$'
-    Priority: 7
+    Priority: 8
 
   # Windows NT
   - Regex: '^<ntstatus\.h>$'
-    Priority: 8
+    Priority: 9
 
   # Windows Kernel
   - Regex: '^<winternl\.h>$'
-    Priority: 9
+    Priority: 10
 
   # Windows Core
   - Regex: '^<(lmcons|shlobj_core|tchar)\.h>$'
-    Priority: 10
+    Priority: 11
 
   # Windows System
   - Regex: '^<(bcrypt|ncrypt|pdh|psapi|tlhelp32|wincrypt)\.h>$'
-    Priority: 11
+    Priority: 12
 
   # Windows Networking
   - Regex: '^<iphlpapi\.h>$'
-    Priority: 12
+    Priority: 13
 
   # Windows OLE
   - Regex: '^<(objbase|ole2)\.h>$'
-    Priority: 13
+    Priority: 14
 
   # Windows Common Controls
   - Regex: '^<(commctrl|shellapi|shlobj|windowsx)\.h>$'
-    Priority: 14
+    Priority: 15
 
   # Windows Graphics
   - Regex: '^<(gdiplus|dwrite|d2d1|d3d11)\.h>$'
-    Priority: 15
+    Priority: 16
 
   # Third Party
   - Regex: '^<.*\..*>$'
-    Priority: 2
+    Priority: 3
 ...

@@ -27,17 +27,8 @@
       "architecture": { "value": "x86", "strategy": "external" },
       "cacheVariables": {
         "VCPKG_TARGET_TRIPLET": "x86-debug",
-        "CMAKE_BUILD_TYPE": "Debug"
-      }
-    },
-    {
-      "name": "x86-lint",
-      "inherits": "default",
-      "toolchainFile": "${sourceDir}/res/toolchain-lint.cmake",
-      "architecture": { "value": "x86", "strategy": "external" },
-      "cacheVariables": {
-        "VCPKG_TARGET_TRIPLET": "x86-debug",
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "Debug",
+        "BUILD_TESTS": true
       }
     },
     {
@@ -66,17 +57,8 @@
       "architecture": { "value": "x64", "strategy": "external" },
       "cacheVariables": {
         "VCPKG_TARGET_TRIPLET": "x64-debug",
-        "CMAKE_BUILD_TYPE": "Debug"
-      }
-    },
-    {
-      "name": "x64-lint",
-      "inherits": "default",
-      "toolchainFile": "${sourceDir}/res/toolchain-lint.cmake",
-      "architecture": { "value": "x64", "strategy": "external" },
-      "cacheVariables": {
-        "VCPKG_TARGET_TRIPLET": "x64-debug",
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "Debug",
+        "BUILD_TESTS": true
       }
     },
     {
@@ -107,11 +89,6 @@
       "configurePreset": "x86-debug"
     },
     {
-      "name": "x86-lint",
-      "displayName": "X86 Lint",
-      "configurePreset": "x86-lint"
-    },
-    {
       "name": "x86-coverage",
       "displayName": "X86 Coverage",
       "configurePreset": "x86-coverage"
@@ -125,11 +102,6 @@
       "name": "x64-debug",
       "displayName": "X64 Debug",
       "configurePreset": "x64-debug"
-    },
-    {
-      "name": "x64-lint",
-      "displayName": "X64 Lint",
-      "configurePreset": "x64-lint"
     },
     {
       "name": "x64-coverage",
@@ -160,24 +132,6 @@
         "outputOnFailure": true,
         "verbosity": "verbose"
       }
-    },
-    {
-      "name": "x86-coverage",
-      "displayName": "X86 Coverage",
-      "configurePreset": "x86-coverage",
-      "output": {
-        "outputOnFailure": true,
-        "verbosity": "verbose"
-      }
-    },
-    {
-      "name": "x64-coverage",
-      "displayName": "X64 Coverage",
-      "configurePreset": "x64-coverage",
-      "output": {
-        "outputOnFailure": true,
-        "verbosity": "verbose"
-      }
     }
   ],
   "packagePresets": [
@@ -197,22 +151,15 @@
       "name": "x86-debug",
       "steps": [
         { "name": "x86-debug", "type": "configure" },
-        { "name": "x86-debug", "type": "build" }
-      ]
-    },
-    {
-      "name": "x86-lint",
-      "steps": [
-        { "name": "x86-lint", "type": "configure" },
-        { "name": "x86-lint", "type": "build" }
+        { "name": "x86-debug", "type": "build" },
+        { "name": "x86-debug", "type": "test" }
       ]
     },
     {
       "name": "x86-coverage",
       "steps": [
         { "name": "x86-coverage", "type": "configure" },
-        { "name": "x86-coverage", "type": "build" },
-        { "name": "x86-coverage", "type": "test" }
+        { "name": "x86-coverage", "type": "build" }
       ]
     },
     {
@@ -227,22 +174,15 @@
       "name": "x64-debug",
       "steps": [
         { "name": "x64-debug", "type": "configure" },
-        { "name": "x64-debug", "type": "build" }
-      ]
-    },
-    {
-      "name": "x64-lint",
-      "steps": [
-        { "name": "x64-lint", "type": "configure" },
-        { "name": "x64-lint", "type": "build" }
+        { "name": "x64-debug", "type": "build" },
+        { "name": "x64-debug", "type": "test" }
       ]
     },
     {
       "name": "x64-coverage",
       "steps": [
         { "name": "x64-coverage", "type": "configure" },
-        { "name": "x64-coverage", "type": "build" },
-        { "name": "x64-coverage", "type": "test" }
+        { "name": "x64-coverage", "type": "build" }
       ]
     },
     {

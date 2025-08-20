@@ -7,22 +7,19 @@ set(PRODUCT_NAME "Product")
 configure_file(res/version.h.in ${CMAKE_BINARY_DIR}/src/version.h LF)
 
 # Objects
-file(GLOB_RECURSE headers CONFIGURE_DEPENDS src/core/*.hpp)
-file(GLOB_RECURSE sources CONFIGURE_DEPENDS src/core/*.cpp)
+file(GLOB headers CONFIGURE_DEPENDS src/*/*.hpp)
+file(GLOB sources CONFIGURE_DEPENDS src/*/*.cpp)
 
 add_library(objects OBJECT ${sources})
 target_sources(objects PUBLIC FILE_SET HEADERS FILES ${headers})
 target_include_directories(objects PUBLIC ${CMAKE_BINARY_DIR}/src src)
 target_compile_features(objects PUBLIC cxx_std_20)
 
+enable_coverage(src/core/random.cpp)
+
 if(WIN32)
   target_compile_definitions(objects PUBLIC NOMINMAX WIN32_LEAN_AND_MEAN)
 endif()
-
-find_package(Boost CONFIG REQUIRED COMPONENTS core
-  heap bimap container circular_buffer intrusive smart_ptr lockfree
-  outcome leaf asio beast json url filesystem uuid process program_options)
-target_link_libraries(objects PUBLIC ${Boost_LIBRARIES})
 
 find_package(spdlog CONFIG REQUIRED)
 target_link_libraries(objects PUBLIC spdlog::spdlog)
@@ -39,7 +36,8 @@ target_link_libraries(main PRIVATE objects)
 set_property(GLOBAL PROPERTY CTEST_TARGETS_ADDED 1)
 enable_testing()
 
-add_executable(tests src/tests.cpp src/main.manifest)
+file(GLOB tests_sources CONFIGURE_DEPENDS src/*/tests/*.cpp)
+add_executable(tests ${tests_sources} src/tests.cpp src/main.manifest)
 target_link_libraries(tests PRIVATE objects)
 
 find_package(GTest CONFIG REQUIRED)
@@ -54,7 +52,8 @@ if(NOT BUILD_TESTS)
 endif()
 
 # Benchmarks
-add_executable(benchmarks src/benchmarks.cpp src/main.manifest)
+file(GLOB benchmarks_sources CONFIGURE_DEPENDS src/*/benchmarks/*.cpp)
+add_executable(benchmarks ${benchmarks_sources} src/benchmarks.cpp src/main.manifest)
 target_link_libraries(benchmarks PRIVATE objects)
 
 find_package(benchmark CONFIG REQUIRED)

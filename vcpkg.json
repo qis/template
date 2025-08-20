@@ -1,24 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
   "dependencies": [
-    "boost-core",
-    "boost-heap",
-    "boost-bimap",
-    "boost-container",
-    "boost-circular-buffer",
-    "boost-intrusive",
-    "boost-smart-ptr",
-    "boost-lockfree",
-    "boost-outcome",
-    "boost-leaf",
-    "boost-asio",
-    "boost-beast",
-    "boost-json",
-    "boost-url",
-    "boost-uuid",
-    "boost-filesystem",
-    "boost-process",
-    "boost-program-options",
+    "wil",
     {
       "name": "spdlog",
       "default-features": false,
@@ -26,7 +9,6 @@
         "wchar"
       ]
     },
-    "wil",
     {
       "name": "gtest",
       "features": [

@@ -1,16 +1,12 @@
 #include "random.hpp"
-#include <boost/filesystem/operations.hpp>
-#include <spdlog/spdlog.h>
-#include <version.h>
 #include <format>
 #include <limits>
 #include <random>
 
 namespace core {
 
-boost::filesystem::path test() {
-  spdlog::info("Version: {}", PROJECT_VERSION);
-  return boost::filesystem::current_path();
+std::filesystem::path test() {
+  return std::filesystem::current_path();
 }
 
 std::string random() {

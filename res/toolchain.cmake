@@ -96,6 +96,12 @@ if(NOT DEFINED CMAKE_C_COMPILER_LAUNCHER OR NOT DEFINED CMAKE_CXX_COMPILER_LAUNC
   endif()
 endif()
 
+# Coverage
+if(NOT COMMAND enable_coverage)
+  function(enable_coverage)
+  endfunction()
+endif()
+
 # Build Directories
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")

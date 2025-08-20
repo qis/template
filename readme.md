@@ -4,6 +4,51 @@ C++20 project template that uses:
 * [`vcpkg`][vcpkg] - a mirrored vcpkg repository
 * [`ports`][ports] - a custom ports overlay
 
+<details>
+<summary>Boost</summary>
+
+To add boost ports as dependencies:
+
+1. Modify [vcpkg.json](vcpkg.json):
+
+```json5
+{
+  // ...
+  "dependencies": [
+    "boost-core",
+    "boost-heap",
+    "boost-bimap",
+    "boost-container",
+    "boost-circular-buffer",
+    "boost-intrusive",
+    "boost-smart-ptr",
+    "boost-lockfree",
+    "boost-outcome",
+    "boost-leaf",
+    "boost-asio",
+    "boost-beast",
+    "boost-json",
+    "boost-url",
+    "boost-uuid",
+    "boost-filesystem",
+    "boost-process",
+    "boost-program-options",
+    // ...
+  ]
+}
+```
+
+2. Modify [CMakeLists.txt](CMakeLists.txt):
+
+```cmake
+find_package(Boost CONFIG REQUIRED COMPONENTS core
+  heap bimap container circular_buffer intrusive smart_ptr lockfree
+  outcome leaf asio beast json url filesystem uuid process program_options)
+target_link_libraries(objects PUBLIC ${Boost_LIBRARIES})
+```
+
+</details>
+
 ## Visual Studio
 Required Visual Studio components:
 
@@ -178,9 +223,6 @@ format.cmd
 :: Build the project in x64 debug mode.
 build.cmd x64-debug
 
-:: Build the project in x64 debug mode using clang-tidy as the linter.
-build.cmd x64-lint
-
 :: Build the project in x64 debug mode and run coverage tests.
 build.cmd x64-coverage
 
@@ -276,9 +318,6 @@ http {
 
 ### Coverage
 ![x64-coverage](res/x64-coverage.png)
-
-### Lint
-![x64-lint](res/x64-lint.png)
 
 [vcpkg]: https://github.com/qis/vcpkg
 [ports]: https://github.com/qis/ports

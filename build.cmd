@@ -1,7 +1,7 @@
 @echo off
 cd /d "%~dp0"
 setlocal EnableDelayedExpansion
-set presets=x64-debug x64-lint x64-coverage x64-release x86-debug x86-lint x86-coverage x86-release
+set presets=x64-debug x64-coverage x64-release x86-debug x86-coverage x86-release
 if "%*" neq "" set presets=%*
 for %%p in (%presets%) do (
   cmake --workflow %%p

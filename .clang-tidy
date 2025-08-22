@@ -23,6 +23,7 @@ fuchsia-multiple-inheritance,\
 fuchsia-virtual-inheritance,\
 llvm-prefer-static-over-anonymous-namespace,\
 misc-*,\
+-misc-no-recursion,\
 -misc-include-cleaner,\
 -misc-unused-parameters,\
 -misc-use-anonymous-namespace,\
